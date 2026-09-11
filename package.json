@@ -1,0 +1,40 @@
+{
+  "name": "ai-devguide",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Code in Context: The Modern Developer's Guide to AI. Spectacle presentations and workshop hub by Mark Joseph J. Solidarios.",
+  "author": "Mark Joseph J. Solidarios <https://github.com/mjsolidarios>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjsolidarios/ai-devguide.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans": "^5.2.8",
+    "@phosphor-icons/react": "^2.1.10",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.9.4",
+    "spectacle": "^10.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.0"
+  }
+}
