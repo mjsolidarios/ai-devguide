@@ -28,9 +28,14 @@ export const spectacleTheme = {
   size: {
     width: 1366,
     height: 768,
-    maxCodePaneHeight: 440,
+    maxCodePaneHeight: 620,
   },
   backdropStyle: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#E4E1DB',
   },
 }

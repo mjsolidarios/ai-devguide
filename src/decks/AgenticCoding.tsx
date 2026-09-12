@@ -67,8 +67,7 @@ export default function AgenticCoding() {
       />
 
       <StatementSlide
-        kicker="Protocol"
-        title="MCP is USB for models."
+        title="MCP is a shared plug for tools."
         body="Instead of a custom plugin per chat app, you expose a server: filesystem, GitHub, browser, issue tracker, docs. The agent discovers tools and calls them with structured arguments."
       />
 
@@ -90,7 +89,6 @@ async function callTool(name, args, repo) {
       />
 
       <StatementSlide
-        kicker="Context engineering"
         title="The prompt is the least of it."
         body="Quality now comes from what the agent can see: tests, types, ADRs, failing logs, and a short project brief. Dumping the whole repo into the window is not a strategy."
       />
@@ -111,12 +109,11 @@ async function callTool(name, args, repo) {
         language="markdown"
         code={`# AGENTS.md
 
-This is a Vite + React workshop site.
+Inventory lab, Flask + pytest.
 
-- Use npm, not yarn.
-- Do not add new UI libraries.
-- Keep slides left-aligned and light.
-- Run npm run build before you open a PR.
+- Use pip, not conda.
+- Do not add packages without asking.
+- Tests live in tests/. Run pytest.
 - Never commit .env files or API keys.`}
         notes="Show your own repo's AGENTS.md if you add one later. The point is: agents read this."
       />

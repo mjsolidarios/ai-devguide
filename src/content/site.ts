@@ -102,7 +102,7 @@ export const TOOLS = [
       },
       {
         name: 'Vercel',
-        use: 'Static hosting for this hub and the Spectacle decks. Git push to deploy.',
+        use: 'Where this workshop site is hosted. You do not need an account to follow the talks.',
         url: 'https://vercel.com/',
       },
     ],
@@ -117,18 +117,13 @@ export const TOOLS = [
       },
       {
         name: 'Node.js 20.19+ or 22+',
-        use: 'Required to run this project locally and most modern JS toolchains.',
+        use: 'Required for most modern JS toolchains and many AI coding agents.',
         url: 'https://nodejs.org/',
       },
       {
         name: 'Python 3.12+',
         use: 'Still the default for data, scripting, and many course assignments.',
         url: 'https://www.python.org/',
-      },
-      {
-        name: 'Spectacle',
-        use: 'React presentation library used for every talk in this repo.',
-        url: 'https://nearform.com/open-source/spectacle/',
       },
     ],
   },
@@ -145,7 +140,7 @@ export const PREREQUISITES = [
   },
   {
     title: 'Node.js 20.19 or newer',
-    detail: 'Confirm with node -v. This site and most JS agents expect a current LTS.',
+    detail: 'Confirm with node -v. Most JS agents and course projects expect a current LTS.',
   },
   {
     title: 'Access to one AI coding tool',
@@ -158,39 +153,6 @@ export const PREREQUISITES = [
   {
     title: 'Course basics',
     detail: 'Comfortable with functions, git diffs, and reading error messages. This is not an intro to programming.',
-  },
-] as const
-
-export const SETUP_STEPS = [
-  {
-    title: 'Install Node.js',
-    detail: 'Use the current LTS from nodejs.org or a version manager such as nvm or fnm.',
-    command: 'node -v',
-  },
-  {
-    title: 'Clone this repository',
-    detail: 'Work from a local copy so you can present offline after the first install.',
-    command: 'git clone https://github.com/mjsolidarios/ai-devguide.git',
-  },
-  {
-    title: 'Install dependencies',
-    detail: 'Run this from the project root. A lockfile keeps versions stable across machines.',
-    command: 'cd ai-devguide && npm install',
-  },
-  {
-    title: 'Start the hub',
-    detail: 'Vite serves the summary pages and every Spectacle deck on one origin.',
-    command: 'npm run dev',
-  },
-  {
-    title: 'Open a talk',
-    detail: 'From the hub, open Talk 1, 2, or 3. Use the arrow keys. Press Ctrl+K for the Spectacle command bar.',
-    command: 'http://localhost:5173',
-  },
-  {
-    title: 'Present',
-    detail: 'Alt+Shift+F fullscreen, Alt+Shift+P presenter notes, Alt+Shift+O overview. Export with ?exportMode=true.',
-    command: 'Alt+Shift+P',
   },
 ] as const
 
@@ -223,8 +185,5 @@ export const RESPONSIBLE = [
 
 export const SPECTACLE_KEYS = [
   { keys: 'Right / Left', action: 'Next or previous slide' },
-  { keys: 'Ctrl+K / Cmd+K', action: 'Command bar' },
   { keys: 'Alt+Shift+F', action: 'Fullscreen' },
-  { keys: 'Alt+Shift+P', action: 'Presenter mode' },
-  { keys: 'Alt+Shift+O', action: 'Overview' },
 ] as const

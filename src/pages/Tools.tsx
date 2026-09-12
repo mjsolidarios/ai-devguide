@@ -8,8 +8,8 @@ export default function Tools() {
           <h1>Tools</h1>
           <p>
             A short stack for the workshop. Use one editor, one agent, Git, and
-            a runtime you can install on a student laptop. Switch vendors later.
-            Do not collect five chat apps first.
+            a runtime you can install on your laptop. Switch vendors later. Do
+            not collect five chat apps first.
           </p>
         </div>
         <div className="page-visual">

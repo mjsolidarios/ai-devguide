@@ -274,35 +274,34 @@ p {
   display: flex;
   flex-direction: column;
   min-height: 220px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.talk:hover {
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
+.talk:hover h3 {
+  color: var(--forest-mid);
 }
 
-.talk:first-child {
+.talks .talk:first-child {
   grid-row: 1 / span 2;
   padding: 0;
   overflow: hidden;
 }
 
-.talk:first-child::before {
+.talks .talk:first-child::before {
   content: "";
   display: block;
   height: 180px;
   background: url("/images/workstation.jpg") center / cover no-repeat;
 }
 
-.talk:first-child > * {
+.talks .talk:first-child > * {
   padding-inline: 1.6rem;
 }
 
-.talk:first-child .talk-code {
+.talks .talk:first-child .talk-code {
   padding-top: 1.15rem;
 }
 
-.talk:first-child .talk-meta {
+.talks .talk:first-child .talk-meta {
   padding-bottom: 1.5rem;
 }
 
@@ -364,44 +363,38 @@ p {
   font-size: 0.92rem;
 }
 
-.guide-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-}
-
-.guide-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.4rem;
-  background: var(--card);
-  text-decoration: none;
-  min-height: 180px;
-}
-
-.guide-card:nth-child(2) {
-  background: var(--pale);
-}
-
-.guide-card h3 {
-  font-size: 1.15rem;
+.page-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.035em;
   font-weight: 500;
-  margin: 0.6rem 0;
+  color: var(--forest);
+  margin-bottom: 0.8rem;
 }
 
-.guide-card p {
-  color: var(--ink-soft);
-  font-size: 0.95rem;
+.guide-list {
+  border-top: 1px solid var(--line);
 }
 
-.icon-chip {
-  width: 34px;
-  height: 34px;
+.guide-row {
   display: grid;
-  place-items: center;
-  background: var(--pale);
-  color: var(--pale-ink);
-  border-radius: 6px;
+  grid-template-columns: 240px 1fr;
+  gap: 1.5rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  align-items: baseline;
+}
+
+.guide-row h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.guide-row p {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  margin: 0;
 }
 
 .page-hero {
@@ -544,42 +537,100 @@ kbd {
   text-decoration: none;
 }
 
+.site main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-fill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 3.2rem 0 4rem;
+}
+
+.talks-stack {
+  flex: 1;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.talks-stack .talk {
+  min-height: 0;
+}
+
 .deck-shell {
+  position: relative;
   min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
   background: #e4e1db;
 }
 
+.slide-frame {
+  min-height: 0;
+}
+
+.deck-code {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.deck-code > div {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.deck-code pre {
+  flex: 1 1 auto !important;
+  height: 100% !important;
+  max-height: none !important;
+  margin: 0 !important;
+  background: #1f3a32 !important;
+  border-radius: 0 !important;
+  padding: 1.2rem 1.35rem !important;
+  font-family: var(--mono) !important;
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+}
+
 .deck-exit {
-  position: fixed;
-  top: 16px;
-  left: 20px;
-  z-index: 30;
   font-family: var(--mono);
   font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   text-decoration: none;
   color: #6f6a62;
-  background: rgb(247 246 243 / 0.88);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 0.28rem 0.55rem;
+  margin-right: 14px;
 }
 
 @media (max-width: 900px) {
   .hero,
   .page-hero,
   .talks,
-  .guide-grid,
   .program {
     grid-template-columns: 1fr;
   }
 
-  .talk:first-child {
+  .talks-stack {
+    grid-template-rows: none;
+  }
+
+  .guide-row {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .talks .talk:first-child {
     grid-row: auto;
   }
 
-  .talk:first-child::before {
+  .talks .talk:first-child::before {
     height: 140px;
   }
 
@@ -619,8 +670,7 @@ kbd {
     scroll-behavior: auto;
   }
 
-  .btn,
-  .talk {
+  .btn {
     transition: none;
   }
 }

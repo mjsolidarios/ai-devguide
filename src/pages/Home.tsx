@@ -1,9 +1,4 @@
-import {
-  ArrowRight,
-  BookOpen,
-  ShieldCheck,
-  Wrench,
-} from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import {
   AUTHOR,
@@ -25,7 +20,7 @@ export default function Home() {
               Open talks <ArrowRight size={16} weight="bold" />
             </Link>
             <Link className="btn btn-ghost" to="/setup">
-              Prerequisites and setup
+              Prerequisites
             </Link>
           </div>
         </div>
@@ -44,11 +39,10 @@ export default function Home() {
 
       <section className="section" id="talks">
         <div className="wrap">
-          <h2>Three talks, one morning</h2>
+          <h2>Talks</h2>
           <p className="section-copy">
-            Content follows the workshop brief in content.pdf, updated for
-            agentic tools, MCP, and student practice in 2026. Each deck is a
-            Spectacle presentation.
+            Three 50-minute sessions. Open a talk to follow the slides in your
+            browser.
           </p>
           <div className="talks">
             {TALKS.map((talk) => (
@@ -69,7 +63,7 @@ export default function Home() {
         <div className="wrap">
           <h2>Program</h2>
           <p className="section-copy">
-            Registration through close, matching the event run of show.
+            Morning schedule, from registration to close.
           </p>
           <div className="program">
             {PROGRAM.map((slot) => (
@@ -84,34 +78,25 @@ export default function Home() {
 
       <section className="section">
         <div className="wrap">
-          <h2>Before you present</h2>
+          <h2>Before you arrive</h2>
           <p className="section-copy">
-            The hub is the workshop handout: tools, machine setup, and the
-            rules that sit under every demo.
+            Bring a working editor, one AI coding tool, and the habits this
+            workshop will expect in class.
           </p>
-          <div className="guide-grid">
-            <Link className="guide-card" to="/tools">
-              <span className="icon-chip">
-                <Wrench size={18} weight="bold" />
-              </span>
+          <div className="guide-list">
+            <Link className="guide-row" to="/tools">
               <h3>Tools</h3>
               <p>
-                Editors, terminal agents, GitHub, MCP, Node, and Spectacle.
+                Editors, terminal agents, GitHub, MCP, Node, and Python.
               </p>
             </Link>
-            <Link className="guide-card" to="/setup">
-              <span className="icon-chip">
-                <BookOpen size={18} weight="bold" />
-              </span>
-              <h3>Prerequisites and setup</h3>
+            <Link className="guide-row" to="/setup">
+              <h3>Prerequisites</h3>
               <p>
-                What to install, how to run this repo, and Spectacle shortcuts.
+                What to bring, and how to follow the talks in the browser.
               </p>
             </Link>
-            <Link className="guide-card" to="/responsible-ai">
-              <span className="icon-chip">
-                <ShieldCheck size={18} weight="bold" />
-              </span>
+            <Link className="guide-row" to="/responsible-ai">
               <h3>Responsible AI</h3>
               <p>
                 Accountability, coursework, privacy, verification, and credit.

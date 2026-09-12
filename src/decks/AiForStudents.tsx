@@ -73,7 +73,6 @@ Do not rewrite it yet.
       />
 
       <StatementSlide
-        kicker="Integrity"
         title="Your department already has a policy. Follow it in public."
         body="If the syllabus is silent, default to disclosure: tool name, what it produced, what you changed. Silence reads as concealment when something goes wrong."
       />
