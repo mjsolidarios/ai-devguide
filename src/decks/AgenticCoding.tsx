@@ -15,165 +15,176 @@ export default function AgenticCoding() {
       <TitleSlide
         kicker="Talk 1 · 50 minutes"
         title="Agentic Coding"
-        subtitle="From line completion to a loop that plans, uses tools, and checks its own work."
-        notes="Open with the shift students already feel: Copilot completes a line. Agents complete a ticket."
+        subtitle="Give an agent a clear task, follow its tool calls, and review the resulting change."
+        notes="Timing: agent basics 10 min; tools and context 15 min; task example 10 min; exercise 10 min; debrief 5 min. Ask participants to describe one task they have given an AI assistant. Q&A follows this session in the program."
       />
 
       <StatementSlide
-        title="Autocomplete writes tokens. Agents pursue outcomes."
-        body="An agent is a model wrapped in a loop: read the repo, plan a change, call tools, observe the result, and continue until a check passes or a budget runs out."
-        notes="Write the loop on a board if the room allows: observe, plan, act, verify."
+        title="What a coding agent does"
+        body="A coding agent uses a model to choose actions, call tools, and inspect results over several steps. It can search a repository, edit files, and run checks within the access its application allows."
+        notes="Learning objective: participants should be able to describe the loop, write a bounded task, and identify the evidence needed before accepting a patch. An agent may also stop for input, an error, or a usage limit."
       />
 
       <BulletsSlide
         title="The loop, in practice"
         items={[
-          'Observe: open files, search the repo, read the failing test.',
-          'Plan: name the change in one sentence before touching code.',
-          'Act: edit, generate, run commands, query docs through tools.',
-          'Verify: tests, types, linters, a human reading the diff.',
-          'Stop: when the check is green, or when the loop is thrashing.',
+          'Inspect the relevant files and reproduce the reported failure.',
+          'Propose a change and state the assumptions it depends on.',
+          'Edit the code and run the relevant checks.',
+          'Use the result to revise the explanation or the patch.',
+          'Stop when the requirements are checked, or ask for help when blocked.',
         ]}
-        notes="Thrashing is the new failure mode: the agent keeps editing without a better hypothesis."
+        notes="Walk through an empty-list bug. If a check fails, ask what new evidence it provides before making another edit. A green check only covers the behavior that check exercises."
       />
 
       <TwoColSlide
-        title="What changed since Copilot"
-        leftTitle="2011 to 2023"
+        title="Chat assistance and tool use"
+        leftTitle="Chat assistance"
         leftItems={[
-          'Search and Stack Overflow',
-          'Snippet completion',
-          'Chat in a side panel',
-          'You paste context by hand',
+          'You provide code or an error message.',
+          'The model suggests an explanation or patch.',
+          'You apply edits and run commands.',
+          'You bring the results back to the conversation.',
         ]}
-        rightTitle="2024 to 2026"
+        rightTitle="An agent with tools"
         rightItems={[
-          'Repo-wide edits',
-          'Tool-calling agents',
-          'MCP servers for local context',
-          'Skills, rules, and AGENTS.md',
+          'It can search files you allow it to access.',
+          'It can apply a patch across several files.',
+          'It can run permitted commands and read output.',
+          'You review its actions and final changes.',
         ]}
+        notes="These are interaction modes, not a timeline or a ranking. One product may offer both. Use a short chat for a focused explanation; consider an agent when the task needs repository inspection or several tool steps."
       />
 
       <BulletsSlide
-        title="Tools worth knowing this year"
+        title="Choose tools for the task"
         items={[
-          'Cursor: editor with agent mode, rules, and inline review.',
-          'Claude Code, Codex, Gemini CLI, Grok: terminal agents that run your toolchain.',
-          'GitHub Copilot: still strong for completion and PR review.',
-          'MCP: a shared protocol so those agents can use the same tools.',
+          'Code search finds definitions, callers, and nearby tests.',
+          'A file editor applies changes you can inspect in a diff.',
+          'A terminal runs the project’s test and build commands.',
+          'Documentation tools help check the API version in use.',
         ]}
-        notes="Do not sell a single vendor. Students should be able to switch."
+        notes="Have participants name the tool needed for each step of the empty-list fix. The Tools page links to editor and terminal options; one assistant is enough for the exercise."
       />
 
       <StatementSlide
-        title="MCP is a shared plug for tools."
-        body="Instead of a custom plugin per chat app, you expose a server: filesystem, GitHub, browser, issue tracker, docs. The agent discovers tools and calls them with structured arguments."
+        title="Model Context Protocol (MCP)"
+        body="MCP defines how an AI application connects to servers that expose tools, resources, and prompts. A client can discover a tool and request a call. The host and server still need to enforce access controls."
+        notes="Source: https://modelcontextprotocol.io/docs/learn/architecture . Explain host as the AI application, client as its connection to a server, and server as the program exposing capabilities. Agents can also have built-in tools without MCP."
       />
 
       <CodeSlide
-        title="A small MCP-shaped tool"
-        language="javascript"
-        highlightRanges={[[1, 3], [5, 12]]}
-        code={`const tools = [
-  { name: "run_tests", description: "Run the project test suite" },
-  { name: "read_file", description: "Read a source file by path" },
-];
-
-async function callTool(name, args, repo) {
-  if (name === "run_tests") return repo.test();
-  if (name === "read_file") return repo.read(args.path);
-  throw new Error("Unknown tool");
+        title="An example MCP tool definition"
+        language="json"
+        code={`{
+  "name": "read_test_report",
+  "description": "Read the latest test report",
+  "inputSchema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  }
 }`}
-        notes="This is a sketch, not a production server. Point people at modelcontextprotocol.io after class."
+        notes="This is a tool definition excerpt, not a runnable server. Source: https://modelcontextprotocol.io/docs/learn/architecture . The client discovers definitions through tools/list and requests execution through tools/call. Ask: does this tool run tests? No, its description only promises to read the latest report. Check when that report was produced."
       />
 
       <StatementSlide
-        title="The prompt is the least of it."
-        body="Quality now comes from what the agent can see: tests, types, ADRs, failing logs, and a short project brief. Dumping the whole repo into the window is not a strategy."
+        title="Context for a bug fix"
+        body="Give the agent the expected behavior, the actual result, a reproduction, and the relevant file paths. Include version details when an API is involved. Ask it to inspect missing information before it guesses."
+        notes="For normalize([0, 0]), report the actual NaN values and specify the desired [0, 0] result. The phrase “fix normalization” leaves the expected behavior unclear."
       />
 
       <BulletsSlide
-        title="Feed the agent a contract"
+        title="A task brief for normalize()"
         items={[
-          'A one-page goal: what done looks like.',
-          'The failing test or screenshot, not a vague complaint.',
-          'File paths you already suspect, if you have them.',
-          'Commands that are allowed: test, lint, typecheck.',
-          'Commands that are not: migrate production, force-push, rm -rf.',
+          'Input: a small array of finite, non-negative numbers.',
+          'Output: divide each value by the largest value; preserve order.',
+          'Edge cases: return [] for []; return zeros for an all-zero array.',
+          'Constraints: return a new array; add no packages or unrelated edits.',
+          'Check normal input, empty input, zeros, and input preservation.',
         ]}
+        notes="This is a workshop example with an explicit input contract. Negative numbers, strings, NaN, and Infinity are outside this exercise. In an application, decide where to validate those inputs before implementation."
       />
 
       <CodeSlide
-        title="AGENTS.md as a repo handshake"
+        title="Project instructions in AGENTS.md"
         language="markdown"
-        code={`# AGENTS.md
+        code={`# Workshop project
 
-Inventory lab, Flask + pytest.
+JavaScript modules. Tests use node:test.
 
-- Use pip, not conda.
-- Do not add packages without asking.
-- Tests live in tests/. Run pytest.
-- Never commit .env files or API keys.`}
-        notes="Show your own repo's AGENTS.md if you add one later. The point is: agents read this."
+- Keep normalize() in normalize.mjs.
+- Run: node --test normalize.test.mjs
+- Keep changes within the requested task.
+- Ask before adding a dependency.
+- Do not read credentials or deploy this project.`}
+        notes="Source for Codex support: https://developers.openai.com/codex/guides/agents-md/ . File names and instruction loading differ by tool. Check your assistant’s documentation. These are project instructions, not an access-control mechanism; configure filesystem, command, and network permissions separately."
       />
 
       <TwoColSlide
-        title="Spec-driven beats vibe-driven"
-        leftTitle="Vibe coding"
+        title="Scope and permissions"
+        leftTitle="For this exercise"
         leftItems={[
-          'Chat until it looks right',
-          'No test until the demo',
-          'Diff is unreadable',
-          'You cannot explain the change',
+          'Read the example function and its tests.',
+          'Edit the function and add relevant tests.',
+          'Run the named local test command.',
+          'Report the diff and test results.',
         ]}
-        rightTitle="Spec-driven"
+        rightTitle="Outside this task"
         rightItems={[
-          'Write the check first',
-          'Name files and APIs',
-          'Agent implements the spec',
-          'You review against the spec',
+          'Read credentials or unrelated directories.',
+          'Install packages without agreement.',
+          'Change expected results to hide a failure.',
+          'Push, deploy, or modify a shared database.',
         ]}
+        notes="Ask participants to separate task scope from enforced permissions. A sentence in a prompt cannot guarantee a tool will be blocked. Use a disposable project and the narrowest access your application supports."
       />
 
       <BulletsSlide
-        title="When agents fail"
+        title="Failure signals to investigate"
         items={[
-          'They invent APIs that do not exist in your version.',
-          'They fix the test by deleting the assertion.',
-          'They loop on the same three files and never look elsewhere.',
-          'They ignore project conventions because the training prior is louder.',
-          'They leak secrets that were sitting in .env.example comments.',
+          'A new API call without documentation for the installed version.',
+          'A passing test after its assertion was removed or weakened.',
+          'Repeated edits without a new explanation of the failure.',
+          'Unrelated changes that make the diff harder to review.',
+          'Instructions in a fetched page or file asking for unrelated actions.',
         ]}
+        notes="For the last example, imagine a retrieved document asks the agent to upload a local file. Treat external content as task data, and inspect any requested action against your original scope. Pause the run if it starts doing unrelated work."
       />
 
       <StatementSlide
-        title="Keep a human on the merge button."
-        body="Autonomy is a slider, not a switch. Raise it for boilerplate and well-tested chores. Lower it for auth, money, grading, and anything you could not defend in a code review."
+        title="Evidence before accepting a patch"
+        body="Compare the diff with the task brief. Run the relevant checks and examine their output. Confirm the agent preserved existing behavior and list any assumptions or checks that remain unresolved."
+        notes="Ask whether a passing empty-input test proves normal inputs still work. It does not. Have participants name a normal-input test and a mutation check."
       />
 
       <BulletsSlide
-        title="A student practice for this week"
+        title="Exercise · write a task brief"
         items={[
-          'Pick one failing test in a personal project.',
-          'Write a five-line spec in the PR description.',
-          'Let the agent propose a patch. Do not apply it yet.',
-          'Read every hunk. Run the suite yourself.',
-          'Merge only what you can explain out loud.',
+          'Work in pairs for 10 minutes using the normalize() requirements.',
+          'Write the requested change, input contract, and expected outputs.',
+          'Name the files the agent can edit and the check it should run.',
+          'Add a condition that should make it stop and ask for help.',
+          'Exchange briefs and identify one missing or ambiguous requirement.',
         ]}
+        notes="Spend 3 minutes drafting, 4 reviewing with a partner, and 3 revising. No AI account is needed. Look for normal, empty, and zero inputs; preservation of the original array; and a stop condition such as a need to change the public interface."
       />
 
       <RecapSlide
-        title="Take into Talk 2"
+        title="Check your task brief"
         items={[
-          'Agents loop with tools. They do not understand your grade.',
-          'MCP, rules, and AGENTS.md are how you constrain that loop.',
-          'Context and specs beat longer prompts.',
-          'Verification is the job. Generation is the assistant.',
+          'Can another person predict the output for each example?',
+          'Are file access, edits, and commands limited to the task?',
+          'Would the checks catch a plausible but incorrect patch?',
+          'Have you specified when the agent should ask for help?',
         ]}
+        notes="Use the last 5 minutes to discuss two briefs. Keep each brief for the implementation exercise in Talk 3. Talk 2 focuses on how to use assistance while learning the code."
       />
 
-      <CloseSlide notes="Hold for 10 minutes of questions. Icebreaker: who has let an agent open a PR?" />
+      <CloseSlide
+        notes="The program allows 10 minutes for Q&A after this talk. Invite questions about a task that was hard to specify or a tool action participants would want to review first."
+      />
+
     </DeckShell>
   )
 }

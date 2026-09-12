@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <section className="wrap hero">
         <div>
-          <p className="kicker">College of ICT, WVSU</p>
+          <p className="kicker">{WORKSHOP.subtitle}</p>
           <h1>{WORKSHOP.title}</h1>
           <p className="lede">{WORKSHOP.tagline}</p>
           <div className="hero-actions">
@@ -32,7 +32,7 @@ export default function Home() {
             height={720}
           />
           <p className="hero-caption">
-            {AUTHOR.name} · {AUTHOR.org}
+            Workshop by {AUTHOR.name}
           </p>
         </div>
       </section>
@@ -41,8 +41,8 @@ export default function Home() {
         <div className="wrap">
           <h2>Talks</h2>
           <p className="section-copy">
-            Three 50-minute sessions. Open a talk to follow the slides in your
-            browser.
+            Each session includes an explanation, a worked example, and a short
+            exercise. Follow the slides in order or open the topic you need.
           </p>
           <div className="talks">
             {TALKS.map((talk) => (
@@ -80,14 +80,14 @@ export default function Home() {
         <div className="wrap">
           <h2>Before you arrive</h2>
           <p className="section-copy">
-            Bring a working editor, one AI coding tool, and the habits this
-            workshop will expect in class.
+            Check your editor and runtime before the session. Bring a small
+            project, or follow the examples in the slides.
           </p>
           <div className="guide-list">
             <Link className="guide-row" to="/tools">
               <h3>Tools</h3>
               <p>
-                Editors, terminal agents, GitHub, MCP, Node, and Python.
+                Choose an editor and coding assistant, with links to their docs.
               </p>
             </Link>
             <Link className="guide-row" to="/setup">
@@ -99,7 +99,7 @@ export default function Home() {
             <Link className="guide-row" to="/responsible-ai">
               <h3>Responsible AI</h3>
               <p>
-                Accountability, coursework, privacy, verification, and credit.
+                Check course rules, protect private data, and document assistance.
               </p>
             </Link>
           </div>

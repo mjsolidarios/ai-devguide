@@ -7,7 +7,7 @@ export default function Talks() {
       <h1 className="page-title">Talks</h1>
       <p className="section-copy">
         Open a talk and follow along. Arrow keys move slides. Fullscreen with
-        Alt+Shift+F. Hub in the footer returns here.
+        Alt+Shift+F. Hub in the footer returns to the home page.
       </p>
       <div className="talks-stack">
         {TALKS.map((talk) => (

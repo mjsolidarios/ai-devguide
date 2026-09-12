@@ -7,9 +7,9 @@ export default function ResponsibleAI() {
         <div>
           <h1>Responsible AI</h1>
           <p>
-            These talks treat AI as a power tool. You stay accountable for
-            grades, users, and the diff. These are the rules for class and for
-            coursework.
+            Use these checks when studying or reviewing AI-assisted code.
+            For assessed work, follow the assignment instructions and your
+            institution’s policy; this guide does not set course rules.
           </p>
         </div>
         <div className="page-visual">
@@ -35,11 +35,13 @@ export default function ResponsibleAI() {
       </section>
       <section className="section">
         <div className="wrap">
-          <h2>A sentence you can put on a submission</h2>
+          <h2>An example disclosure</h2>
           <p className="section-copy">
-            I used an AI coding assistant to draft or review parts of this
-            work. I read the output, tested it, and I can explain every change
-            I submitted.
+            “I used [tool and version, if available] on [date] to suggest edge
+            cases for normalize(). I wrote the implementation and tests, checked
+            the empty and all-zero inputs, and ran the tests with Node.js.”
+            Replace this example with an accurate account of your work and use
+            the format your instructor requires.
           </p>
         </div>
       </section>

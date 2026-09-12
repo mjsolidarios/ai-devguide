@@ -7,8 +7,9 @@ export default function Setup() {
         <div>
           <h1>Prerequisites</h1>
           <p>
-            Arrive with Git, an editor, and access to one AI coding tool. The
-            talks are on this site. Open them in your browser.
+            To try the exercises, bring an editor, Git, and Node.js. Access to
+            an AI coding tool is useful, but you can also work through the
+            examples with a partner. Reading the slides only needs a browser.
           </p>
         </div>
         <div className="page-visual">
@@ -25,8 +26,8 @@ export default function Setup() {
         <div className="wrap">
           <h2>What to bring</h2>
           <p className="section-copy">
-            The talks assume you already write programs. They do not teach Git
-            from zero.
+            The sessions assume basic programming experience. Check these items
+            before you arrive so exercise time goes into the code.
           </p>
           <div className="stack">
             {PREREQUISITES.map((item) => (

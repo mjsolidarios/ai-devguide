@@ -221,7 +221,7 @@ export function TitleSlide({
           {AUTHOR.name}
         </Text>
         <Text color="muted" fontSize="15px" margin="6px 0 0">
-          {AUTHOR.role}, {AUTHOR.org}
+          {AUTHOR.github}
         </Text>
       </SlideFrame>
       {notes ? <Notes>{notes}</Notes> : null}

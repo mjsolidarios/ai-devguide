@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Code in Context: The Modern Developer's Guide to AI. Spectacle presentations and workshop hub by Mark Joseph J. Solidarios.",
+  "description": "Code in Context: an AI-assisted programming workshop with slides, exercises, and tool guides by Mark Joseph J. Solidarios.",
   "author": "Mark Joseph J. Solidarios <https://github.com/mjsolidarios>",
   "license": "MIT",
   "repository": {

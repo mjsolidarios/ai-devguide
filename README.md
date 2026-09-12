@@ -1,12 +1,14 @@
 # Code in Context
 
-The Modern Developer's Guide to AI.
+AI-assisted programming workshop.
 
-Workshop hub and [Spectacle](https://nearform.com/open-source/spectacle/) decks for a morning program at the College of ICT, West Visayas State University.
+Workshop website and three 50-minute [Spectacle](https://nearform.com/open-source/spectacle/) presentations for IT students and developers.
 
-**Author:** [Mark Joseph J. Solidarios](https://github.com/mjsolidarios), Division Chair, Entertainment and Multimedia Computing.
+**Author:** [Mark Joseph J. Solidarios](https://github.com/mjsolidarios).
 
-Source topics come from `content.pdf` and are updated for current practice: agentic coding, Model Context Protocol, context engineering, student integrity, and review-first workflows.
+The sessions cover task briefs and agent tools, studying with AI under course rules, and testing and reviewing a code change. Each deck includes a worked example, an exercise, and speaker notes with timing and discussion guidance. `content.pdf` is the original topic reference.
+
+The shared JavaScript example normalizes a small array of finite, non-negative numbers. Learners specify normal, empty, and all-zero behavior, then test a patch for both correct values and a new array result. Runnable snippets use `.mjs` files and Node’s built-in test runner; no test package is required.
 
 ## Talks
 
@@ -20,10 +22,11 @@ Companion pages: `/tools`, `/setup`, `/responsible-ai`.
 
 ## Prerequisites
 
-- Node.js 20.19+ or 22+
-- Git and a GitHub account
-- VS Code or Cursor
-- Access to at least one AI coding assistant
+- A supported Node.js LTS release compatible with Vite (22.12+ on the 22.x line, for example)
+- Git and a code editor
+- Optional access to an AI coding assistant for the workshop exercises
+
+Viewing the site and slides only requires a browser. GitHub and hosting accounts are optional for participants.
 
 ## Setup
 
@@ -47,6 +50,17 @@ npm run preview
 - `Alt+Shift+P`: presenter mode
 - `Alt+Shift+O`: overview
 - `?exportMode=true`: print-friendly export
+
+## Content references
+
+Tool descriptions link to official documentation on the Tools page. Slide notes cite sources for MCP, project instructions, and the Node.js test runner:
+
+- [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture)
+- [Project instructions with AGENTS.md](https://developers.openai.com/codex/guides/agents-md/)
+- [Node.js test runner](https://nodejs.org/api/test.html)
+- [Vite runtime requirements](https://vite.dev/guide/)
+
+Responsible-use guidance is general advice. Assignment and institutional rules determine what assistance is permitted and how it must be disclosed.
 
 ## Vercel
 

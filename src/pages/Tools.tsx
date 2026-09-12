@@ -7,9 +7,9 @@ export default function Tools() {
         <div>
           <h1>Tools</h1>
           <p>
-            A short stack for the workshop. Use one editor, one agent, Git, and
-            a runtime you can install on your laptop. Switch vendors later. Do
-            not collect five chat apps first.
+            Choose one editor and one coding assistant you can access. Git and
+            Node.js cover the shared exercises. The other tools are optional;
+            check each tool’s setup, permissions, and account limits in its docs.
           </p>
         </div>
         <div className="page-visual">

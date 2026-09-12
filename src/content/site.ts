@@ -1,17 +1,15 @@
 export const AUTHOR = {
   name: 'Mark Joseph J. Solidarios',
   shortName: 'M. J. Solidarios',
-  role: 'Division Chair, Entertainment and Multimedia Computing',
-  org: 'College of ICT, West Visayas State University',
   github: 'https://github.com/mjsolidarios',
   handle: 'mjsolidarios',
 } as const
 
 export const WORKSHOP = {
   title: 'Code in Context',
-  subtitle: "The Modern Developer's Guide to AI",
+  subtitle: 'AI-assisted programming workshop',
   tagline:
-    'Three 50-minute talks on agentic coding, honest student practice, and getting real work done with AI.',
+    'Learn to give coding agents clear tasks, study with AI, and test and review the code they produce. Three 50-minute sessions for IT students and developers.',
 } as const
 
 export const TALKS = [
@@ -22,11 +20,11 @@ export const TALKS = [
     duration: '50 min',
     title: 'Agentic Coding',
     blurb:
-      'How coding assistants became agents that plan, call tools, and loop until the tests pass, and where a human still has to sit.',
+      'Follow an agent through a code change. Write a task brief, choose its tools and permissions, and decide when its work is ready for review.',
     updates: [
       'Model Context Protocol',
-      'Context engineering',
-      'Spec-driven agent loops',
+      'Task briefs',
+      'Permissions and checks',
     ],
   },
   {
@@ -36,11 +34,11 @@ export const TALKS = [
     duration: '50 min',
     title: 'Effective Use of AI as an IT Student',
     blurb:
-      'Use AI as a tutor and reviewer without outsourcing the thinking your degree is supposed to build.',
+      'Practice asking for hints, checking explanations, and solving a problem without the chat. Learn how to document assistance under your course rules.',
     updates: [
       'Academic integrity',
-      'Learning loops',
-      'Citing AI assistance',
+      'Guided practice',
+      'Documenting AI assistance',
     ],
   },
   {
@@ -50,11 +48,11 @@ export const TALKS = [
     duration: '50 min',
     title: 'Efficient Programming with AI',
     blurb:
-      'A daily workflow: specify, test, generate, review, and ship, without letting the model set the pace.',
+      'Work through a small bug fix: reproduce the failure, write useful tests, inspect the proposed patch, and commit a change you can explain.',
     updates: [
       'AI-assisted debugging',
       'Diff review',
-      'Repo contracts for agents',
+      'Regression tests',
     ],
   },
 ] as const
@@ -76,19 +74,29 @@ export const TOOLS = [
     group: 'Editors and agents',
     items: [
       {
-        name: 'Visual Studio Code',
-        use: 'Default editor. Pair with Copilot or a CLI agent in the integrated terminal.',
-        url: 'https://code.visualstudio.com/',
+        name: 'VS Code and GitHub Copilot',
+        use: 'An editor with integrated AI assistance. Agent mode can edit files and run tools; inspect proposed changes and command approvals.',
+        url: 'https://code.visualstudio.com/docs/agents/overview',
       },
       {
         name: 'Cursor',
-        use: 'Agent-first editor with repo-wide edits, inline review, and project rules.',
-        url: 'https://www.cursor.com/',
+        use: 'An editor with an agent for searching code, editing files, and running terminal commands. Use its diff view to review edits.',
+        url: 'https://cursor.com/docs/agent/overview',
       },
       {
-        name: 'Claude Code, Codex, Gemini CLI, Grok',
-        use: 'Terminal agents that read files, run commands, and iterate against tests.',
-        url: 'https://docs.anthropic.com/en/docs/claude-code',
+        name: 'Claude Code',
+        use: 'A coding agent available in the terminal and other interfaces. It can inspect a project, edit code, and run commands.',
+        url: 'https://code.claude.com/docs/en/overview',
+      },
+      {
+        name: 'Codex CLI',
+        use: 'A terminal coding agent that reads and edits files and runs commands in a project directory. Check its approval and sandbox settings before use.',
+        url: 'https://developers.openai.com/codex/cli/',
+      },
+      {
+        name: 'Gemini CLI',
+        use: 'A terminal agent with file and shell tools. Review the requested access before letting it work in your repository.',
+        url: 'https://geminicli.com/docs/',
       },
     ],
   },
@@ -97,32 +105,32 @@ export const TOOLS = [
     items: [
       {
         name: 'Git and GitHub',
-        use: 'Small commits, pull requests, and a paper trail of what the agent changed.',
+        use: 'Use Git to inspect diffs and save commits. GitHub is useful for sharing a repository or reviewing a pull request; local exercises only need Git.',
         url: 'https://github.com/',
       },
       {
         name: 'Vercel',
-        use: 'Where this workshop site is hosted. You do not need an account to follow the talks.',
+        use: 'An optional place to deploy a web project. Hosting and a hosting account are not required for these exercises.',
         url: 'https://vercel.com/',
       },
     ],
   },
   {
-    group: 'Protocols and runtime',
+    group: 'Protocols and runtimes',
     items: [
       {
         name: 'Model Context Protocol (MCP)',
-        use: 'Standard way for agents to use docs, issue trackers, browsers, and local tools.',
-        url: 'https://modelcontextprotocol.io/',
+        use: 'A protocol for connecting AI applications to tools and data. Optional for this workshop; the slides explain how clients and servers exchange requests.',
+        url: 'https://modelcontextprotocol.io/docs/learn/architecture',
       },
       {
-        name: 'Node.js 20.19+ or 22+',
-        use: 'Required for most modern JS toolchains and many AI coding agents.',
+        name: 'Node.js',
+        use: 'Runs the JavaScript examples. Use a supported LTS release; Node 22.12+ on the 22.x line also meets this site’s Vite requirement.',
         url: 'https://nodejs.org/',
       },
       {
-        name: 'Python 3.12+',
-        use: 'Still the default for data, scripting, and many course assignments.',
+        name: 'Python',
+        use: 'Optional if you bring a Python project. Use the version and environment specified by that project; the shared exercises use JavaScript.',
         url: 'https://www.python.org/',
       },
     ],
@@ -131,55 +139,55 @@ export const TOOLS = [
 
 export const PREREQUISITES = [
   {
-    title: 'A current code editor',
-    detail: 'VS Code or Cursor. Install GitLens or the GitHub pull request extension if you use VS Code.',
+    title: 'An editor you know',
+    detail: 'Open a project and use the integrated terminal before the session. VS Code, Cursor, or your usual editor is fine; extra extensions are optional.',
   },
   {
-    title: 'Git, with a GitHub account',
-    detail: 'You should be able to clone, commit, push, and open a pull request without looking it up.',
+    title: 'Git for saving and reviewing changes',
+    detail: 'Check git --version. Practice git status, git diff, and making a commit. A command reference is fine. A GitHub account is optional.',
   },
   {
-    title: 'Node.js 20.19 or newer',
-    detail: 'Confirm with node -v. Most JS agents and course projects expect a current LTS.',
+    title: 'Node.js for the code exercises',
+    detail: 'Check node --version. Use a supported LTS release, such as Node 22.12+ on the 22.x line. The examples use the built-in test runner, with no test package to install.',
   },
   {
     title: 'Access to one AI coding tool',
-    detail: 'Copilot, Cursor, Claude, Codex, Gemini, or Grok. One paid or free tier is enough for the workshop.',
+    detail: 'Use a tool you already have access to and check that it works before the session. No purchase is required: you can pair with someone or review the supplied examples.',
   },
   {
     title: 'A small personal repo',
-    detail: 'Bring a project you already understand. Agents are easier to judge on familiar code.',
+    detail: 'Bring code you understand and are allowed to share with your chosen tool. Save your work in Git first and remove credentials or personal data from the exercise files.',
   },
   {
-    title: 'Course basics',
-    detail: 'Comfortable with functions, git diffs, and reading error messages. This is not an intro to programming.',
+    title: 'Basic programming experience',
+    detail: 'You should be able to read a function, trace an array operation, and interpret an error message. The slides include code you can follow even without an AI account.',
   },
 ] as const
 
 export const RESPONSIBLE = [
   {
-    title: 'You ship the code',
-    body: 'The model has no deadline, no grade, and no license to take blame. If it reaches production or a submission, your name is on it.',
+    title: 'Review what you submit',
+    body: 'Read the changed code, run the relevant checks, and explain why the change works. Record anything you could not verify so a reviewer can assess it.',
   },
   {
-    title: 'Do the thinking the course is measuring',
-    body: 'Using AI to explain an error is legitimate study. Pasting the assignment and submitting the first answer is academic dishonesty.',
+    title: 'Check the assignment rules',
+    body: 'A course may allow explanations, restrict generated code, or prohibit AI for an assessment. Read the instructions and ask the instructor if they are unclear. Disclosure does not make prohibited use acceptable.',
   },
   {
     title: 'Keep secrets out of prompts',
-    body: 'Never paste API keys, passwords, student records, unpublished research, or private chat logs. Treat every prompt as leaving your machine.',
+    body: 'Use synthetic data and short, redacted examples. Check what your tool sends to its model provider and what it retains. A terminal interface does not mean the model runs locally.',
   },
   {
-    title: 'Verify before you trust',
-    body: 'Run the tests. Read the diff. Check citations. Models still invent APIs, papers, and stack traces that look locally plausible.',
+    title: 'Check claims against evidence',
+    body: 'Reproduce reported errors, check APIs in the documentation for your version, and open original sources before citing them. A plausible explanation or a passing test can still miss a bug.',
   },
   {
     title: 'Say when AI helped',
-    body: 'Coursework, papers, and open source all need attribution. A short note in the README or submission is enough and expected.',
+    body: 'Follow the disclosure format required by your course, publisher, or project. Name the tool, what it helped with, what you changed, and how you checked the result. Keep a prompt log if required.',
   },
   {
-    title: 'Watch cost, bias, and access',
-    body: 'Cloud agents cost money and energy. Outputs carry training bias. Prefer tools your classmates can actually obtain.',
+    title: 'Plan for access and usage limits',
+    body: 'Check account limits before an exercise and set a budget if you enable paid usage. Share a non-AI way to complete group work. Review examples for assumptions that exclude users, such as names or addresses in only one format.',
   },
 ] as const
 
