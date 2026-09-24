@@ -15,16 +15,15 @@ export default function AiForStudents() {
   return (
     <DeckShell>
       <TitleSlide
-        kicker="Talk 2 · 50 minutes"
+        kicker="Talk 2"
         title="Effective Use of AI as an IT Student"
         subtitle="Study from your own sources, pick the right assistant for the job, claim the free tools you qualify for, and keep your learning your own."
-        notes="Timing: learning goals and permitted use 8 min; tools for the job 17 min; student benefits 7 min; disclosure and verification 8 min; exercise 8 min; recap 2 min. Use a hypothetical assignment for discussion so nobody has to reveal their own assessment history."
       />
 
       <StatementSlide
         title="Set a learning goal first"
         body="Today’s example: explain array mapping, spot a division by zero, and test the edge cases. After using AI, close the chat and solve a similar problem on your own. That is how you find out what you actually learned."
-        notes="Ask participants to name a specific skill they are practising this week. 'Finish the lab' is a task; 'trace a loop and explain its exit condition' is something they can check."
+        notes="'Finish the lab' is a task. 'Trace a loop and explain its exit condition' is a skill you can check. Name the skill before you open the chat."
       />
 
       <TwoColSlide
@@ -43,7 +42,7 @@ export default function AiForStudents() {
           'What assistance must be disclosed.',
           'Whether prompts or logs are required.',
         ]}
-        notes="These are questions, not a policy for any institution. An instructor may permit one use and prohibit another. If the instructions are unclear, ask before using AI on assessed work."
+        notes="Rules differ between courses and even between assignments in the same course. If the instructions are unclear, ask your instructor before using AI on assessed work."
       />
 
       <BulletsSlide
@@ -55,7 +54,7 @@ export default function AiForStudents() {
           'Run it, compare with your prediction, and explain the difference.',
           'Close the chat and try a new input or a related problem.',
         ]}
-        notes="Suggest 10 to 15 minutes of independent attempt as a workshop routine, not a rule. If the model hands over a full solution, set it aside and return to the question you were trying to answer."
+        notes="Give yourself 10 to 15 minutes on your own before asking. If the model hands over a full solution, set it aside and go back to the question you were trying to answer."
       />
 
       <CodeSlide
@@ -78,20 +77,47 @@ Wait for my answer before suggesting a fix.`}
           [4, 9],
           [10, 12],
         ]}
-        notes="[2, 4] gives [0.5, 1]. [0, 0] gives [NaN, NaN] because each division is 0/0. A useful hint: 'What is largest when every score is zero?' The last line is the important one: it stops the model from jumping to the fix."
+        notes="The last line matters most: it stops the model from jumping straight to the fix, so you still do the thinking."
+      />
+
+      <CodeSlide
+        title="More prompts that teach instead of solve"
+        language="markdown"
+        code={`Explain this error message in plain words.
+Do not fix my code. Tell me where to look.
+
+I think this loop runs n times. Am I right?
+Show me how to check it myself.
+
+Here are two ways to write this function.
+Which is easier to read, and why?
+
+Give me three inputs that could break this.`}
+        highlightRanges={[
+          [1, 2],
+          [4, 5],
+          [7, 8],
+          [10, 10],
+        ]}
+        points={[
+          'Read the error before you ask.',
+          'State your guess, then test it.',
+          'Compare options you wrote.',
+          'Hunt for edge cases.',
+        ]}
       />
 
       <SectionSlide
         label="Part 1"
         title="Pick the tool for the job"
         agenda={['Study from your sources', 'Ask, search, and do', 'Design before you code']}
-        notes="Seventeen minutes. Each tool gets one job it does well and one thing to watch for. Features and free limits change often; the Tools page links to current docs."
+        notes="Features and free limits change often. The Tools page on the hub links to the current docs for each tool."
       />
 
       <StatementSlide
         title="Gemini Notebook: answers grounded in your own material"
         body="Formerly NotebookLM. Upload your syllabus, lecture slides, and lab handouts, and the answers cite the passage they came from. It stays inside your sources instead of the whole internet, which is exactly what you want when studying for a course."
-        notes="Google renamed NotebookLM to Gemini Notebook in July 2026; notebooks also sync with the Gemini app. Free with a Google account, with limits. Remind students not to upload material their course says they cannot share."
+        notes="Free with a Google account, with limits. Notebooks also sync with the Gemini app. Do not upload material your course says you cannot share."
       />
 
       <BulletsSlide
@@ -103,7 +129,7 @@ Wait for my answer before suggesting a fix.`}
           'Make an audio overview for review on the commute.',
           'Ask what the sources do not cover, and take that to class.',
         ]}
-        notes="The citation click is the habit to build. A cited answer can still misread its source. The last line turns the tool into a question generator for the instructor."
+        notes="Clicking the citation is the habit to build. A cited answer can still misread its source."
       />
 
       <CodeSlide
@@ -122,7 +148,7 @@ matching lecture notes in these sources?`}
           [4, 5],
           [7, 8],
         ]}
-        notes="'Using only my sources' and 'Cite each claim' are the key phrases. The third prompt finds gaps, which is more useful than another summary."
+        notes="'Using only my sources' and 'Cite each claim' are the key phrases. The third prompt finds gaps in your notes, which is more useful than another summary."
       />
 
       <TableSlide
@@ -134,7 +160,7 @@ matching lecture notes in these sources?`}
           ['Grok', 'Real-time search of recent posts and news on X.', 'Posts are leads, not sources.'],
           ['Google Stitch', 'Turning a description into UI screens and a clickable prototype.', 'Output is a sketch; check contrast and real data.'],
         ]}
-        notes="Resist the urge to pick one 'best' assistant. Each of these does one job better than the others."
+        notes="There is no single best assistant. Each of these does one job better than the others."
       />
 
       <TwoColSlide
@@ -153,7 +179,7 @@ matching lecture notes in these sources?`}
           'Check data controls and chat history settings.',
           'Codex and heavy use need a paid plan.',
         ]}
-        notes="OpenAI merged Chat, Work, and Codex into one desktop app in July 2026. The access question is the teaching point: an app that can read your editor can read the secrets in it."
+        notes="An app that can read your editor can also read any secrets in it, such as API keys in a .env file."
       />
 
       <TwoColSlide
@@ -170,13 +196,13 @@ matching lecture notes in these sources?`}
           'Open the original link before you cite anything.',
           'Free tier has message limits; student offers vary by country.',
         ]}
-        notes="Grok's strength is real-time access to X. That is also its weakness for coursework: popularity is not accuracy. xAI's student offer has required a US .edu email; check eligibility before promising it to anyone."
+        notes="Real-time access to X is Grok's strength, and its weakness for coursework: a popular post is not necessarily an accurate one. Check the student offer's eligibility rules for your country."
       />
 
       <StatementSlide
         title="Google Stitch: design the screens before you write code"
         body="Describe who uses your app and what they need to do. Stitch generates linked UI screens, lets you click through them as a prototype, and exports to Figma or HTML/CSS. Use it to argue about the design, then build it yourself."
-        notes="Free through Google Labs with monthly generation limits. Great for capstone proposals and user testing before any code exists. Generated screens tend to share the same look, so change them to fit your users."
+        notes="Free through Google Labs with monthly generation limits. Generated screens tend to look alike, so adapt them to your users."
       />
 
       <BulletsSlide
@@ -188,14 +214,14 @@ matching lecture notes in these sources?`}
           'Export to Figma or HTML, then check contrast, labels, and real data.',
           'Keep the prompt and export with your project for disclosure.',
         ]}
-        notes="The hesitation notes are the real output. A pretty prototype that confuses users is a cheap mistake to catch at this stage."
+        notes="The hesitation notes are the real output. A polished prototype that confuses users is a cheap mistake to catch before any code exists."
       />
 
       <SectionSlide
         label="Part 2"
         title="Claim what your student status unlocks"
         agenda={['GitHub Education', 'Copilot Student', 'JetBrains and more']}
-        notes="Seven minutes. This is the most practical part of the morning for many students: most of these cost nothing but need a verified account."
+        notes="Most of these cost nothing but need a verified student account."
       />
 
       <TableSlide
@@ -207,7 +233,7 @@ matching lecture notes in these sources?`}
           ['GitHub Pro + Codespaces', 'Pro features and cloud dev environments.', 'While you are a student.'],
           ['JetBrains licence', 'Every JetBrains IDE, renewed yearly.', 'Through the pack or JetBrains directly.'],
         ]}
-        notes="Copilot for students moved to a dedicated Copilot Student plan in March 2026: unlimited completions plus a monthly AI-credit allowance, with models chosen automatically. Check the current terms at education.github.com before quoting numbers."
+        notes="Terms change; check education.github.com for the current details."
       />
 
       <BulletsSlide
@@ -218,14 +244,35 @@ matching lecture notes in these sources?`}
           'Wait for approval. It can take a few days.',
           'Enable Copilot Student, then sign in from your editor.',
         ]}
-        notes="Common failure: the school email is not verified, or the proof photo is unreadable. Suggest students apply this week rather than the night before a project deadline."
+        notes="Most rejections come from an unverified school email or an unreadable proof photo. Apply this week, not the night before a project deadline."
       />
 
       <SectionSlide
         label="Part 3"
         title="Stay honest and safe"
-        agenda={['Disclose', 'Protect data', 'Verify']}
-        notes="Eight minutes."
+        agenda={['Spot mistakes', 'Disclose', 'Protect data']}
+      />
+
+      <BulletsSlide
+        title="How AI gets code wrong"
+        items={[
+          'It invents functions, flags, or packages that do not exist.',
+          'It uses syntax from an older or newer version than yours.',
+          'It fixes the symptom, like hiding an error, not the cause.',
+          'It agrees with a wrong idea because you stated it confidently.',
+          'It sounds equally sure when it is right and when it is wrong.',
+        ]}
+      />
+
+      <BulletsSlide
+        title="Verify an AI explanation"
+        items={[
+          'Run a small example and compare it with the explanation.',
+          'Check API names and parameters in the docs for your version.',
+          'Open a cited source and find the passage that supports the claim.',
+          'Trace each step before accepting a complexity claim.',
+        ]}
+        notes="Try it: is normalize() constant time? Finding the maximum and mapping the array both depend on the array's length, so it is linear."
       />
 
       <BulletsSlide
@@ -236,7 +283,31 @@ matching lecture notes in these sources?`}
           'Describe what you wrote, changed, rejected, and checked.',
           'Use the required disclosure format and keep records if asked.',
         ]}
-        notes="Example: 'I used [tool] on [date] to suggest edge cases for normalize(). I wrote the function and tests and checked normal, empty, and all-zero inputs.' Disclosure and permission are different questions: recording help does not override a restriction."
+        notes="Disclosing help and being allowed to use it are separate questions: writing it down does not make a restricted use acceptable."
+      />
+
+      <CodeSlide
+        title="A disclosure you can adapt"
+        language="markdown"
+        code={`AI assistance: I used [tool] on [date] to
+suggest edge cases for normalize().
+
+I wrote the function and the tests myself.
+I rejected one suggestion that changed the
+expected output instead of fixing the bug.
+
+I checked normal, empty, and all-zero
+inputs by running the tests.`}
+        highlightRanges={[
+          [1, 2],
+          [4, 6],
+          [8, 9],
+        ]}
+        points={[
+          'What the tool did.',
+          'What you did, and what you rejected.',
+          'How you checked it.',
+        ]}
       />
 
       <TwoColSlide
@@ -255,24 +326,171 @@ matching lecture notes in these sources?`}
           'A short description of the behaviour.',
           'Your own minimal example and test.',
         ]}
-        notes="This applies to notebook uploads and desktop-app file access too. A desktop or terminal interface can still send everything to a remote model."
+        notes="This applies to notebook uploads and desktop-app file access too. A desktop or terminal app can still send what it reads to a remote model."
+      />
+
+      <SectionSlide
+        label="Part 4 · Live demo"
+        title="Watch generative AI used the right way"
+        agenda={['1 · Hint', '2 · Verify', '3 · Review', '4 · Practice', '5 · Feedback', '6 · Record']}
+        notes="Follow along with the prompts on screen. Each one is short enough to copy into your own chats."
       />
 
       <BulletsSlide
-        title="Verify an AI explanation"
+        title="What to watch for in the demo"
         items={[
-          'Run a small example and compare it with the explanation.',
-          'Check API names and parameters in the docs for your version.',
-          'Open a cited source and find the passage that supports the claim.',
-          'Trace each step before accepting a complexity claim.',
+          'The code is written and run before the AI is opened.',
+          'Every prompt gives context and asks for one specific thing.',
+          'No AI answer is accepted until it is checked by running code.',
+          'The fix is written by hand; the AI only reviews it.',
+          'The chat ends with a record of what the AI contributed.',
         ]}
-        notes="Ask how participants would check a claim that normalize() is constant time. Finding the maximum and mapping the array both depend on its length."
       />
 
-      <StatementSlide
-        title="Exercise · trace, fix, and explain"
-        body="Eight minutes, no AI. Trace the earlier function for [3, 6], [], and [0, 0]. Add a branch for the all-zero case, then explain to a partner why it is needed and predict the output for [0, 5, 10]."
-        notes="3 minutes to trace, 3 to implement, 2 to explain. Expected: [0.5, 1], [], [0, 0], and [0, 0.5, 1]. A branch returning scores.map(() => 0) when largest === 0 handles zeros and returns a new array."
+      <TwoColSlide
+        title="A weak prompt and a strong one"
+        leftTitle="Weak"
+        leftItems={[
+          'fix my code',
+          'No context: which language, which input?',
+          'Asks for an answer, not understanding.',
+          'Nothing you can check afterwards.',
+        ]}
+        rightTitle="Strong"
+        rightItems={[
+          'Says what you are learning and shows your attempt.',
+          'Gives the input, the output, and what you expected.',
+          'Asks for one hint or one explanation.',
+          'Asks how to check the answer yourself.',
+        ]}
+      />
+
+      <CodeSlide
+        title="Step 1 · Describe the problem, ask for a hint"
+        language="markdown"
+        code={`I am learning JavaScript. This function should
+scale scores so the largest becomes 1.
+
+function normalize(scores) {
+  const largest = Math.max(...scores);
+  return scores.map(score => score / largest);
+}
+
+normalize([2, 4]) gives [0.5, 1], as expected.
+normalize([0, 0]) gives [NaN, NaN].
+
+Do not fix it. Give me one hint about why.`}
+        highlightRanges={[
+          [1, 2],
+          [9, 10],
+          [12, 12],
+        ]}
+        points={[
+          'Context: what you are learning.',
+          'Evidence: real input and output.',
+          'Limit: a hint, not a solution.',
+        ]}
+      />
+
+      <CodeSlide
+        title="Step 2 · Check the explanation yourself"
+        language="markdown"
+        code={`You said 0 / 0 produces NaN in JavaScript.
+Give me two lines I can run in the browser
+console to confirm that.
+
+Also, what does Math.max() return when the
+array is empty? Tell me how to test it
+instead of just telling me the answer.`}
+        highlightRanges={[
+          [1, 3],
+          [5, 7],
+        ]}
+        points={[
+          'Turn the claim into something you can run.',
+          'Run it before you believe it.',
+          'Ask about the edge case you noticed.',
+        ]}
+        notes="In the console, 0 / 0 is NaN and Math.max() with no arguments is -Infinity. An empty array still returns [] because map has nothing to divide."
+      />
+
+      <CodeSlide
+        title="Step 3 · Write the fix, then ask for a review"
+        language="markdown"
+        code={`Here is my fix. Do not rewrite it.
+
+function normalize(scores) {
+  const largest = Math.max(...scores);
+  if (largest === 0) return scores.map(() => 0);
+  return scores.map(score => score / largest);
+}
+
+List inputs it might still get wrong, and
+explain which ones matter for my task.`}
+        highlightRanges={[
+          [1, 1],
+          [5, 5],
+          [9, 10],
+        ]}
+        points={[
+          'The fix is yours; the AI only reviews it.',
+          '"Do not rewrite it" keeps your version.',
+          'Decide which suggestions are in scope.',
+        ]}
+        notes="Expected results after the fix: [3, 6] gives [0.5, 1], [] gives [], [0, 0] gives [0, 0], and [0, 5, 10] gives [0, 0.5, 1]. The reviewer may mention negative numbers or text values; those are outside this task, so note them rather than chase them."
+      />
+
+      <CodeSlide
+        title="Step 4 · Generate practice, not answers"
+        language="markdown"
+        code={`Write three short practice problems like
+this one, about dividing by a value that
+could be zero. Do not include solutions.
+
+Generate ten fake student records with a
+name, ID, and grade for testing. Make every
+value obviously invented.`}
+        highlightRanges={[
+          [1, 3],
+          [5, 7],
+        ]}
+        points={[
+          'Generated practice checks what you learned.',
+          'Generated test data keeps real people out of your prompts.',
+        ]}
+      />
+
+      <CodeSlide
+        title="Step 5 · Get feedback on your writing"
+        language="markdown"
+        code={`Here is the README I wrote for my project.
+Point out sentences that are unclear or
+missing a step. Do not rewrite it for me.
+
+What would a new user still not know
+after reading it?`}
+        highlightRanges={[
+          [1, 3],
+          [5, 6],
+        ]}
+        points={[
+          'Generative AI can write for you; ask it to critique instead.',
+          'Your words, your understanding, your grade.',
+        ]}
+      />
+
+      <CodeSlide
+        title="Step 6 · Close with a record"
+        language="markdown"
+        code={`List every suggestion you made in this
+conversation, and mark which ones I used.
+Keep it short so I can check it against
+my notes.`}
+        highlightRanges={[[1, 4]]}
+        points={[
+          'A starting point for your disclosure.',
+          'Check it: the summary can be wrong too.',
+        ]}
       />
 
       <RecapSlide
@@ -283,12 +501,9 @@ matching lecture notes in these sources?`}
           'Verify sources and remove private data from shared records.',
           'Include the disclosure and evidence the course requires.',
         ]}
-        notes="Ask each participant for one tool they will set up this week and one question they will ask an instructor. The break follows."
       />
 
-      <CloseSlide
-        notes="Take a final question, then the scheduled break. Talk 3 builds one app twice, with and without skills and MCP, then fixes normalize() with a failing test."
-      />
+      <CloseSlide />
     </DeckShell>
   )
 }
