@@ -19,7 +19,7 @@ import {
   Slide,
   Text,
 } from 'spectacle'
-import { AUTHOR } from '../content/site'
+import { AUTHOR, SLIDO } from '../content/site'
 import { spectacleTheme } from '../theme/spectacleTheme'
 
 type TemplateProps = {
@@ -657,11 +657,34 @@ export function CloseSlide({ notes }: { notes?: string }) {
         </Heading>
         <FlexBox
           flexGrow={1}
-          flexDirection="column"
-          justifyContent="flex-end"
-          alignItems="flex-start"
+          alignItems="center"
+          justifyContent="flex-start"
           width={1}
         >
+          <Box
+            padding="12px"
+            margin="0 40px 0 0"
+            style={{ background: colors.tertiary, lineHeight: 0 }}
+          >
+            <img
+              src={SLIDO.qr}
+              alt="QR code for the Slido Q&A"
+              width={240}
+              height={240}
+            />
+          </Box>
+          <FlexBox flexDirection="column" alignItems="flex-start">
+            <Text color="muted" fontSize="16px" fontFamily="monospace" margin="0 0 10px" style={{ padding: 0 }}>
+              Ask on Slido
+            </Text>
+            <Text color="tertiary" fontSize="22px" fontFamily="monospace" margin="0" style={{ padding: 0 }}>
+              <a href={SLIDO.url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>
+                {SLIDO.url.replace('https://', '')}
+              </a>
+            </Text>
+          </FlexBox>
+        </FlexBox>
+        <FlexBox flexDirection="column" alignItems="flex-start" width={1}>
           <Box width={1} margin="0 0 20px" style={{ borderTop: RULE_DARK }} />
           <Text color="muted" fontSize="22px" margin="0 0 10px">
             {AUTHOR.name}

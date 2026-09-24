@@ -5,6 +5,11 @@ export const AUTHOR = {
   handle: 'mjsolidarios',
 } as const
 
+export const SLIDO = {
+  url: 'https://app.sli.do/event/r6h2SrAjuuSYBbkBwW39nZ',
+  qr: '/images/slido-qr.png',
+} as const
+
 export const WORKSHOP = {
   title: 'Code in Context',
   subtitle: 'The modern developer’s guide to AI',
