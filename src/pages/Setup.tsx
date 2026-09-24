@@ -5,7 +5,7 @@ export default function Setup() {
     <>
       <section className="wrap page-hero">
         <div>
-          <h1>Prerequisites</h1>
+          <h1>Setup</h1>
           <p>
             To try the exercises, bring an editor, Git, and Node.js. Access to
             an AI coding tool is useful, but you can also work through the

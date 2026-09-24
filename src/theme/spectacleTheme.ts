@@ -1,3 +1,5 @@
+// Slide tokens. Mirrors the site palette in src/index.css; Spectacle passes
+// these into SVG attributes, so they stay as literal colour values here.
 export const spectacleTheme = {
   colors: {
     primary: '#2F3437',
@@ -6,17 +8,18 @@ export const spectacleTheme = {
     quaternary: '#3D6B5A',
     quinary: '#6F6A62',
     muted: '#C5D4CC',
+    rule: '#D8D4CC',
+    ruleDark: 'rgba(197, 212, 204, 0.28)',
   },
   fonts: {
-    header:
-      '"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+    header: '"IBM Plex Serif", Georgia, "Times New Roman", serif',
     text: '"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
     monospace: '"IBM Plex Mono", "SF Mono", ui-monospace, monospace',
   },
   fontSizes: {
-    h1: '58px',
-    h2: '40px',
-    h3: '28px',
+    h1: '60px',
+    h2: '42px',
+    h3: '30px',
     text: '22px',
     monospace: '16px',
   },

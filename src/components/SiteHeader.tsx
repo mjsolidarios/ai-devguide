@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom'
 const links = [
   { to: '/talks', label: 'Talks' },
   { to: '/tools', label: 'Tools' },
-  { to: '/setup', label: 'Prerequisites' },
+  { to: '/demo', label: 'Demo' },
+  { to: '/setup', label: 'Setup' },
   { to: '/responsible-ai', label: 'Responsible AI' },
 ]
 

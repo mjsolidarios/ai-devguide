@@ -6,9 +6,9 @@ Workshop website and three 50-minute [Spectacle](https://nearform.com/open-sourc
 
 **Author:** [Mark Joseph J. Solidarios](https://github.com/mjsolidarios).
 
-The sessions cover task briefs and agent tools, studying with AI under course rules, and testing and reviewing a code change. Each deck includes a worked example, an exercise, and speaker notes with timing and discussion guidance. `content.pdf` is the original topic reference.
+The sessions cover choosing and extending coding agents (AI IDEs, terminal agents such as OpenCode and Antigravity CLI, AGENTS.md, Agent Skills, and MCP servers), studying with AI under course rules (Gemini Notebook, ChatGPT desktop, Grok, Google Stitch, and GitHub Education benefits), and a live demo that builds the same app with and without skills and MCP before fixing a bug with a failing test. Slides reveal one point per click, and code slides step through highlighted lines. Each deck has speaker notes with timing. `content.pdf` is the original program reference.
 
-The shared JavaScript example normalizes a small array of finite, non-negative numbers. Learners specify normal, empty, and all-zero behavior, then test a patch for both correct values and a new array result. Runnable snippets use `.mjs` files and Node’s built-in test runner; no test package is required.
+The shared JavaScript example normalizes a small array of finite, non-negative numbers. Runnable snippets use `.mjs` files and Node’s built-in test runner; no test package is required.
 
 ## Talks
 
@@ -18,7 +18,7 @@ The shared JavaScript example normalizes a small array of finite, non-negative n
 | `/talks/ai-for-students` | Effective Use of AI as an IT Student |
 | `/talks/efficient-programming` | Efficient Programming with AI |
 
-Companion pages: `/tools`, `/setup`, `/responsible-ai`.
+Companion pages: `/tools` (tools and student benefits), `/demo` (files and scorecard for the two-setup demo), `/setup`, `/responsible-ai`.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ npm run preview
 
 ## Spectacle
 
-- Arrow keys: next and previous slide
+- Arrow keys: next and previous step (items reveal one at a time)
 - `Ctrl+K` / `Cmd+K`: command bar
 - `Alt+Shift+F`: fullscreen
 - `Alt+Shift+P`: presenter mode
@@ -56,6 +56,7 @@ npm run preview
 Tool descriptions link to official documentation on the Tools page. Slide notes cite sources for MCP, project instructions, and the Node.js test runner:
 
 - [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture)
+- [Agent Skills specification](https://agentskills.io/home)
 - [Project instructions with AGENTS.md](https://developers.openai.com/codex/guides/agents-md/)
 - [Node.js test runner](https://nodejs.org/api/test.html)
 - [Vite runtime requirements](https://vite.dev/guide/)

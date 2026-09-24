@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { SiteLayout } from './components/SiteLayout'
+import Demo from './pages/Demo'
 import Home from './pages/Home'
 import ResponsibleAI from './pages/ResponsibleAI'
 import Setup from './pages/Setup'
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/talks" element={<Talks />} />
           <Route path="/tools" element={<Tools />} />
+          <Route path="/demo" element={<Demo />} />
           <Route path="/setup" element={<Setup />} />
           <Route path="/responsible-ai" element={<ResponsibleAI />} />
         </Route>
