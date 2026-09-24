@@ -12,36 +12,78 @@ export const WORKSHOP = {
     'Three 50-minute sessions for IT students and developers. Brief a coding agent, extend it with skills and MCP servers, study with source-grounded tools, and review every change before you keep it.',
 } as const
 
+export function slug(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
 export const TALKS = [
   {
     slug: 'agentic-coding',
     path: '/talks/agentic-coding',
     code: 'Talk 1',
+    stage: '1.0',
+    time: '8:20–9:10',
     duration: '50 min',
     title: 'Agentic Coding',
     blurb:
       'How a coding agent works, where it runs, and how to extend it. Compare AI IDEs and terminal agents, write project instructions, add a skill, and connect an MCP server without handing over more access than the task needs.',
     updates: ['AI IDEs and terminal agents', 'Skills and MCP', 'Task briefs'],
+    sample: {
+      file: '.agents/skills/regression-test/SKILL.md',
+      code: `---
+name: regression-test
+description: Add a failing test before fixing
+  a bug. Use when the user reports a bug.
+---
+
+1. Reproduce with the smallest input.
+2. Write a test that fails for that reason.
+3. Fix it; run the new test and the suite.`,
+    },
   },
   {
     slug: 'ai-for-students',
     path: '/talks/ai-for-students',
     code: 'Talk 2',
+    stage: '2.0',
+    time: '9:20–10:10',
     duration: '50 min',
     title: 'Effective Use of AI as an IT Student',
     blurb:
       'Study with a notebook grounded in your own sources, pick the right assistant for the job, claim the free tools your student status unlocks, and document the help you used under your course rules.',
     updates: ['Gemini Notebook', 'GitHub Education', 'Stitch, Grok, ChatGPT desktop'],
+    sample: {
+      file: 'Gemini Notebook · prompt',
+      code: `Using only my sources, explain how
+Array.map differs from a for loop.
+Cite each claim.
+
+Which syllabus topics have no matching
+lecture notes in these sources?`,
+    },
   },
   {
     slug: 'efficient-programming',
     path: '/talks/efficient-programming',
     code: 'Talk 3',
+    stage: '3.0',
+    time: '10:20–11:10',
     duration: '50 min',
     title: 'Efficient Programming with AI',
     blurb:
       'Watch one app built twice: once from a bare prompt, once with project instructions, a skill, and two MCP servers. Then fix a real bug with a failing test and review the patch line by line.',
     updates: ['Same app, two setups', 'Regression tests', 'Diff review'],
+    sample: {
+      file: 'normalize.test.mjs',
+      code: `test("normal, empty, and all-zero inputs", () => {
+  assert.deepEqual(normalize([2, 4]), [0.5, 1]);
+  assert.deepEqual(normalize([]), []);
+  assert.deepEqual(normalize([0, 0]), [0, 0]);
+});`,
+    },
   },
 ] as const
 

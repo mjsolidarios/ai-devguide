@@ -2,6 +2,18 @@
   {
     "date": "2026-09-25",
     "scope": "app",
+    "genre": "modern-minimal",
+    "macrostructure": "Narrative Workflow",
+    "theme": "Cobalt",
+    "theme_axes": "light-cool / grotesk-sans / cool",
+    "enrichment": "none (code cards, typography only)",
+    "nav": "N13 inline cmdk",
+    "footer": "Ft1 mast-headed",
+    "brief": "Code in Context hub redesign + deck retheme; design.md locked"
+  },
+  {
+    "date": "2026-09-25",
+    "scope": "app",
     "macrostructure": "Long Document (hub)",
     "theme": "custom",
     "theme_axes": "light / roman-serif / chromatic-other",

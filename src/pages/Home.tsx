@@ -1,131 +1,138 @@
 import { ArrowRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { DEMO_PROMPT } from '../content/demo'
-import { AUTHOR, PROGRAM, TALKS, WORKSHOP } from '../content/site'
+import { CodeCard } from '../components/CodeCard'
+import { DEMO_FILES, RUNS } from '../content/demo'
+import { PROGRAM, TALKS, WORKSHOP } from '../content/site'
+
+const agentsFile = DEMO_FILES[0]
 
 export default function Home() {
   return (
     <>
       <section className="wrap hero">
-        <div>
+        <div className="hero-copy">
           <h1>{WORKSHOP.title}</h1>
           <p className="hero-sub">{WORKSHOP.subtitle}</p>
           <p className="lede">{WORKSHOP.tagline}</p>
           <div className="hero-actions">
-            <Link className="btn btn-primary" to="/talks">
-              Open talks <ArrowRight size={16} weight="bold" />
-            </Link>
+            <a className="btn btn-primary" href={TALKS[0].path}>
+              Start at Talk 1 <ArrowRight size={16} weight="bold" />
+            </a>
             <Link className="btn btn-ghost" to="/tools">
-              Tools
+              Browse tools
             </Link>
           </div>
         </div>
-        <figure className="hero-visual">
-          <img
-            src="/images/hero.jpg"
-            alt="Empty computer laboratory in late afternoon light"
-            width={1280}
-            height={720}
-            fetchPriority="high"
-          />
-          <figcaption className="hero-caption">
-            Workshop by {AUTHOR.name}
-          </figcaption>
-        </figure>
+        <CodeCard
+          className="hero-card"
+          file={agentsFile.path}
+          note="the file every agent reads first"
+          code={agentsFile.code}
+        />
       </section>
 
-      <section className="section" id="talks">
-        <div className="wrap">
-          <h2>Talks</h2>
-          <p className="section-copy">
-            Each session mixes explanation, a worked example, and a short
-            exercise. Slides reveal one point at a time; follow along or jump
-            to the topic you need.
-          </p>
-          <div className="talks">
-            {TALKS.map((talk) => (
-              <Link key={talk.slug} className="talk" to={talk.path}>
-                <span className="talk-code">
-                  {talk.code} · {talk.duration}
+      <section className="wrap schedule" aria-labelledby="schedule-title">
+        <h2 id="schedule-title" className="visually-hidden">
+          Program
+        </h2>
+        <ol className="ruler">
+          {PROGRAM.map((slot) => (
+            <li
+              key={slot.time + slot.label}
+              className={slot.label.startsWith('Talk') ? 'is-talk' : undefined}
+            >
+              <time>{slot.time}</time>
+              <span>{slot.label}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="stages" aria-label="Talks">
+        <ol className="wrap stage-list">
+          {TALKS.map((talk) => (
+            <li className="stage" key={talk.slug}>
+              <div className="stage-rule">
+                <span className="stage-num">{talk.stage}</span>
+                <span className="stage-time">
+                  {talk.time} · {talk.duration}
                 </span>
-                <h3>{talk.title}</h3>
-                <p>{talk.blurb}</p>
-                <span className="talk-meta">{talk.updates.join(' / ')}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
+              </div>
+              <div className="stage-body">
+                <div className="stage-copy">
+                  <h2>{talk.title}</h2>
+                  <p>{talk.blurb}</p>
+                  <ul className="stage-topics">
+                    {talk.updates.map((topic) => (
+                      <li key={topic}>{topic}</li>
+                    ))}
+                  </ul>
+                  <a className="text-link" href={talk.path}>
+                    Open the slides <ArrowRight size={14} weight="bold" />
+                  </a>
+                </div>
+                <CodeCard file={talk.sample.file} code={talk.sample.code} />
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
-      <section className="section section-forest">
-        <div className="wrap demo-band">
+      <section className="band">
+        <div className="wrap band-inner">
           <div>
             <h2>One prompt, two agents</h2>
             <p>
-              In Talk 3, the same agent builds the same app twice: once from a
-              bare prompt, once with AGENTS.md, a skill, and two MCP servers.
-              You score both runs. The files are on the demo page so you can
-              repeat it at home.
+              In Talk 3 the same agent builds the same app twice. You score
+              both runs against the same checklist.
             </p>
-            <Link className="btn btn-light" to="/demo">
+            <Link className="btn btn-primary" to="/demo">
               See the demo setup <ArrowRight size={16} weight="bold" />
             </Link>
           </div>
-          <pre className="demo-prompt">
-            <code>{DEMO_PROMPT}</code>
-          </pre>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="wrap">
-          <h2>Program</h2>
-          <p className="section-copy">
-            Morning schedule, from registration to close.
-          </p>
-          <ol className="program">
-            {PROGRAM.map((slot) => (
-              <li className="program-item" key={slot.time + slot.label}>
-                <span>{slot.time}</span>
-                <strong>{slot.label}</strong>
-              </li>
+          <dl className="band-runs">
+            {RUNS.map((run) => (
+              <div key={run.id}>
+                <dt>
+                  <span>{run.label}</span> {run.title}
+                </dt>
+                <dd>
+                  {run.id === 'a'
+                    ? run.setup[1]
+                    : 'AGENTS.md, a ship-check skill, and the Context7 and Playwright MCP servers.'}
+                </dd>
+              </div>
             ))}
-          </ol>
+          </dl>
         </div>
       </section>
 
       <section className="section">
-        <div className="wrap">
-          <h2>Before you arrive</h2>
-          <p className="section-copy">
-            Set up one editor and one agent, and apply for student benefits
-            early. Bring a small project, or follow the examples in the slides.
-          </p>
-          <div className="guide-list">
-            <Link className="guide-row" to="/tools">
-              <h3>Tools</h3>
-              <p>
-                AI IDEs, terminal agents, skills and MCP, study tools, and what
-                is free for students.
-              </p>
+        <div className="wrap split">
+          <div>
+            <h2>Before you arrive</h2>
+            <p className="section-copy">
+              Set up one editor and one agent, and apply for student benefits
+              early. Press <kbd>Ctrl</kbd> <kbd>K</kbd> anywhere on this site
+              to jump to a tool or talk.
+            </p>
+          </div>
+          <div className="index-list">
+            <Link to="/tools">
+              <strong>Tools</strong>
+              <span>AI IDEs, terminal agents, skills and MCP, study tools</span>
             </Link>
-            <Link className="guide-row" to="/demo">
-              <h3>Demo</h3>
-              <p>
-                The prompt, AGENTS.md, skill, and MCP configs from the
-                two-setup demo, plus a scorecard.
-              </p>
+            <Link to="/tools#free">
+              <strong>Free for students</strong>
+              <span>GitHub Education, Copilot Student, JetBrains</span>
             </Link>
-            <Link className="guide-row" to="/setup">
-              <h3>Prerequisites</h3>
-              <p>What to bring, and how to follow the talks in the browser.</p>
+            <Link to="/setup">
+              <strong>Setup</strong>
+              <span>What to bring and how to follow the slides</span>
             </Link>
-            <Link className="guide-row" to="/responsible-ai">
-              <h3>Responsible AI</h3>
-              <p>
-                Course rules, private data, vetting skills and servers, and
-                disclosing assistance.
-              </p>
+            <Link to="/responsible-ai">
+              <strong>Responsible AI</strong>
+              <span>Course rules, private data, disclosure</span>
             </Link>
           </div>
         </div>

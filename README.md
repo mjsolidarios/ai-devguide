@@ -10,6 +10,10 @@ The sessions cover choosing and extending coding agents (AI IDEs, terminal agent
 
 The shared JavaScript example normalizes a small array of finite, non-negative numbers. Runnable snippets use `.mjs` files and Node’s built-in test runner; no test package is required.
 
+## Design
+
+The visual system is locked in `design.md` (Cobalt theme: Space Grotesk, IBM Plex Sans and Mono, one cobalt accent, graphite code cards). Tokens live in `src/tokens.css`; slide colours mirror them in `src/theme/spectacleTheme.ts`. Press `Ctrl+K` / `Cmd+K` on the site for the command palette.
+
 ## Talks
 
 | Route | Topic |

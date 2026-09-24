@@ -338,14 +338,17 @@ export function SectionSlide({
           {title}
         </Heading>
         {agenda ? (
-          <FlexBox width={1} flexDirection="row" alignItems="stretch">
+          <FlexBox
+            width={1}
+            flexDirection="row"
+            alignItems="stretch"
+            justifyContent="flex-start"
+          >
             {agenda.map((item) => (
               <Box
                 key={item}
-                flexGrow={1}
-                flexBasis={0}
                 padding="12px 20px 0 0"
-                style={{ borderTop: RULE_DARK }}
+                style={{ flex: '1 1 0', borderTop: RULE_DARK }}
               >
                 <Text color="muted" fontSize="18px" margin="0" lineHeight="1.35">
                   {item}

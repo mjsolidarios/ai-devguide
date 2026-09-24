@@ -1,26 +1,33 @@
-import { Link } from 'react-router-dom'
+import { ArrowRight } from '@phosphor-icons/react'
 import { TALKS } from '../content/site'
 
 export default function Talks() {
   return (
-    <section className="wrap page-fill">
-      <h1 className="page-title">Talks</h1>
-      <p className="section-copy">
-        Open a talk and follow along. Arrow keys move slides. Fullscreen with
-        Alt+Shift+F. Hub in the footer returns to the home page.
-      </p>
-      <div className="talks-stack">
+    <>
+      <section className="wrap page-head">
+        <h1>Talks</h1>
+        <p>
+          Three 50-minute sessions. Each point appears on a click: use the
+          arrow keys to step, <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>F</kbd> for
+          fullscreen, and Hub at the bottom left to come back here.
+        </p>
+      </section>
+      <section className="wrap talk-index">
         {TALKS.map((talk) => (
-          <Link key={talk.slug} className="talk" to={talk.path}>
-            <span className="talk-code">
-              {talk.code} · {talk.duration}
+          <a key={talk.slug} className="talk-row" href={talk.path}>
+            <span className="talk-num">{talk.stage}</span>
+            <span className="talk-main">
+              <strong>{talk.title}</strong>
+              <span>{talk.blurb}</span>
+              <span className="talk-topics">{talk.updates.join(' · ')}</span>
             </span>
-            <h3>{talk.title}</h3>
-            <p>{talk.blurb}</p>
-            <span className="talk-meta">{talk.updates.join(' / ')}</span>
-          </Link>
+            <span className="talk-when">
+              {talk.time}
+              <ArrowRight size={18} weight="bold" aria-hidden="true" />
+            </span>
+          </a>
         ))}
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

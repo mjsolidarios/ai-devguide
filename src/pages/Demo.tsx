@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { CodeCard } from '../components/CodeCard'
 import { DEMO_APP, DEMO_FILES, DEMO_PROMPT, RUNS, SCORECARD } from '../content/demo'
 
 type Scores = Record<string, boolean>
@@ -16,7 +16,7 @@ export default function Demo() {
       <section className="wrap page-head">
         <h1>Same app, two setups</h1>
         <p>
-          The live demo from <Link to="/talks/efficient-programming">Talk 3</Link>.
+          The live demo from <a href="/talks/efficient-programming">Talk 3</a>.
           One prompt goes to the same agent twice. Run A starts in an empty
           folder. Run B starts with project instructions, a skill, and two MCP
           servers. Everything you need to repeat it is on this page.
@@ -29,12 +29,7 @@ export default function Demo() {
             <h2>{DEMO_APP.name}</h2>
             <p className="section-copy">{DEMO_APP.summary}</p>
           </div>
-          <figure className="code-block">
-            <figcaption>Prompt · identical in both runs</figcaption>
-            <pre>
-              <code>{DEMO_PROMPT}</code>
-            </pre>
-          </figure>
+          <CodeCard file="prompt.txt" note="identical in both runs" code={DEMO_PROMPT} />
         </div>
       </section>
 
@@ -73,15 +68,12 @@ export default function Demo() {
           </p>
           <div className="files">
             {DEMO_FILES.map((file) => (
-              <figure className="code-block" key={file.path}>
-                <figcaption>
-                  <code>{file.path}</code>
-                  <span>{file.note}</span>
-                </figcaption>
-                <pre>
-                  <code>{file.code}</code>
-                </pre>
-              </figure>
+              <CodeCard
+                key={file.path}
+                file={file.path}
+                note={file.note}
+                code={file.code}
+              />
             ))}
           </div>
         </div>

@@ -1,18 +1,18 @@
-// Slide tokens. Mirrors the site palette in src/index.css; Spectacle passes
+// Slide tokens. Hex equivalents of the Cobalt tokens in src/tokens.css; Spectacle passes
 // these into SVG attributes, so they stay as literal colour values here.
 export const spectacleTheme = {
   colors: {
-    primary: '#2F3437',
-    secondary: '#1F3A32',
-    tertiary: '#F7F6F3',
-    quaternary: '#3D6B5A',
-    quinary: '#6F6A62',
-    muted: '#C5D4CC',
-    rule: '#D8D4CC',
-    ruleDark: 'rgba(197, 212, 204, 0.28)',
+    primary: '#323841',
+    secondary: '#161B22',
+    tertiary: '#F8FAFD',
+    quaternary: '#0076ED',
+    quinary: '#5E646D',
+    muted: '#A5ABB4',
+    rule: '#DEE2E7',
+    ruleDark: '#373D48',
   },
   fonts: {
-    header: '"IBM Plex Serif", Georgia, "Times New Roman", serif',
+    header: '"Space Grotesk", "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif',
     text: '"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
     monospace: '"IBM Plex Mono", "SF Mono", ui-monospace, monospace',
   },
@@ -24,7 +24,7 @@ export const spectacleTheme = {
     monospace: '16px',
   },
   fontWeights: {
-    header: '500',
+    header: '600',
     text: '400',
   },
   space: [12, 20, 32],
@@ -39,6 +39,6 @@ export const spectacleTheme = {
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: '#E4E1DB',
+    backgroundColor: '#E4E8ED',
   },
 }
