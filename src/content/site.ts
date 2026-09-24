@@ -79,7 +79,7 @@ lecture notes in these sources?`,
     duration: '50 min',
     title: 'Efficient Programming with AI',
     blurb:
-      'Watch one app built twice: once from a bare prompt, once with project instructions, a skill, and two MCP servers. Then fix a real bug with a failing test and review the patch line by line.',
+      'Watch a mobile app for thesis consultations built twice: once from a bare prompt, once with project instructions, a skill, and two MCP servers. Then fix a real bug with a failing test and review the patch line by line.',
     updates: ['Same app, two setups', 'Regression tests', 'Diff review'],
     sample: {
       file: 'normalize.test.mjs',

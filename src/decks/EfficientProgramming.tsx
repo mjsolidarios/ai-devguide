@@ -21,7 +21,7 @@ export default function EfficientProgramming() {
         kicker="Talk 3 · 50 minutes"
         title="Efficient Programming with AI"
         subtitle="Build one app twice to see what setup changes, then fix a bug with a failing test and review the patch."
-        notes="Timing: two-setup demo 22 min (start both runs early, they need time); bug fix and review 20 min; exercise 6 min; recap 2 min. Before the talk: two empty folders, the same agent and model in both, Run B's files already in place, Node installed. Open /demo on a second screen for the scorecard."
+        notes="Timing: two-setup demo 22 min (start both runs early, they need time); bug fix and review 20 min; exercise 6 min; recap 2 min. Before the talk: two empty folders, the same agent and model in both, Run B's files already in place, Node installed, and Expo Go on a phone on the same Wi-Fi. Open /demo on a second screen for the scorecard."
       />
 
       <SectionSlide
@@ -65,7 +65,7 @@ export default function EfficientProgramming() {
         highlightRanges={[
           [1, 3],
           [5, 9],
-          [11, 15],
+          [11, 16],
         ]}
         points={[
           'Commands the agent can run to check itself.',
@@ -81,13 +81,13 @@ export default function EfficientProgramming() {
         code={skillFile.code}
         highlightRanges={[
           [1, 5],
-          [9, 9],
-          [10, 11],
-          [12, 13],
-          [14, 15],
-          [16, 17],
+          [9, 10],
+          [11, 12],
+          [13, 14],
+          [15, 16],
+          [17, 18],
         ]}
-        notes="Walk the steps one click at a time. Step 2 needs the Playwright MCP server; step 3 is a keyboard check most people skip; step 5 asks for evidence rather than a claim."
+        notes="Walk the steps one click at a time. Step 2 needs the Playwright MCP server; step 3 is an accessibility check most people skip; step 5 asks for evidence rather than a claim."
       />
 
       <CodeSlide
@@ -99,8 +99,8 @@ export default function EfficientProgramming() {
           [7, 10],
         ]}
         points={[
-          'Context7: current React and Vite docs.',
-          'Playwright: the browser the skill uses to look at the app.',
+          'Context7: current Expo and React Native docs.',
+          'Playwright: opens the web preview at phone size for the skill.',
           'OpenCode users: the same servers go in opencode.json.',
         ]}
         notes="The /demo page on the site shows the opencode.json equivalent. Check both runs' progress now."
@@ -118,7 +118,7 @@ export default function EfficientProgramming() {
       <BulletsSlide
         title="Score both runs"
         items={[...SCORECARD]}
-        notes="Use the scorecard on the /demo page and tick each line for each run with the room. Run npm run build and npm test yourself in both folders; do not take either agent's word for it. Whatever the result, the discussion is about which line the setup affected."
+        notes="Use the scorecard on the /demo page and tick each line for each run with the room. Run npm test and npx expo export yourself in both folders, then open each app in Expo Go; do not take either agent's word for it. The web preview is not a phone, so the Expo Go check matters. Whatever the result, the discussion is about which line the setup affected."
       />
 
       <StatementSlide
@@ -227,7 +227,7 @@ export function normalize(scores) {
           'The reported commands ran on this patch.',
           'Unverified cases are written down.',
         ]}
-        notes="The same checklist applied to the Consultation Queue runs. Use it to ask specific questions, not as proof of correctness."
+        notes="The same checklist applied to the Thesis Consult runs. Use it to ask specific questions, not as proof of correctness."
       />
 
       <BulletsSlide
